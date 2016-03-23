@@ -63,10 +63,10 @@ public interface Trader {
 	 * stock exchange. Implementations of stock exchange may limit the window of
 	 * opportunity for a trader to speak once the speak operation has been
 	 * invoked.
-	 * 
+	 *
 	 * @param stockExchange
 	 */
-	public void speak(StockExchange stockExchange);
+	public void speak(StockExchangeOrderView stockExchange);
 	
 	/**
 	 * @return the set of stock types that this Trader has on inventory.

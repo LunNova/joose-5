@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import uk.ac.glasgow.jagora.impl.RandomTrader;
+import uk.ac.glasgow.jagora.impl.StockExchangeOrderProxy;
 import uk.ac.glasgow.jagora.test.TraderTest;
 import uk.ac.glasgow.jagora.test.stub.StubStockExchange;
 
@@ -29,7 +30,7 @@ public class RandomTraderTest  extends TraderTest{
 		StubStockExchange stockExchange = new StubStockExchange();
 		
 		for (int i = 0 ; i < 20 ; i ++){
-			trader.speak(stockExchange);
+			trader.speak(new StockExchangeOrderProxy(stockExchange));
 		}
 		
 		Double averageBuyPrice =

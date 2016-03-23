@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import uk.ac.glasgow.jagora.Trader;
 import uk.ac.glasgow.jagora.impl.DefaultTrader;
+import uk.ac.glasgow.jagora.impl.DefaultTraderBuilder;
 import uk.ac.glasgow.jagora.impl.LimitBuyOrder;
 import uk.ac.glasgow.jagora.test.BuyOrderTest;
 
@@ -15,7 +16,11 @@ public class LimitBuyOrderTest extends BuyOrderTest {
 
 	@Before
 	public void setUp () throws Exception {
-		Trader buyer = new DefaultTrader("default", 500.0, lemons, 0);
+		Trader buyer = new DefaultTraderBuilder()
+				.setName("default")
+				.setCash(500.0)
+				.addStock(lemons, 0)
+				.build();
 		buyOrder0 = new LimitBuyOrder (buyer, lemons, 1, 0.1);
 		buyOrder1 =	new LimitBuyOrder (buyer, lemons, 1, 0.05);
 		order0 = buyOrder0;

@@ -9,7 +9,7 @@ import java.util.List;
  * @author tws
  *
  */
-public interface StockExchange {
+public interface StockExchange extends Observable {
 
 	/**
 	 * Performs clearing on all stock markets hosted by this exchange. Clearing

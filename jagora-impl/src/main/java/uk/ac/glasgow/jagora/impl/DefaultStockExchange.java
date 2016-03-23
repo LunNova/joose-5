@@ -1,9 +1,6 @@
 package uk.ac.glasgow.jagora.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import uk.ac.glasgow.jagora.BuyOrder;
@@ -15,7 +12,7 @@ import uk.ac.glasgow.jagora.TickEvent;
 import uk.ac.glasgow.jagora.Trade;
 import uk.ac.glasgow.jagora.World;
 
-public class DefaultStockExchange implements StockExchange {
+public class DefaultStockExchange extends Observable implements StockExchange {
 
 	private final Map<Stock,Market> markets;
 	private World world;
@@ -36,21 +33,25 @@ public class DefaultStockExchange implements StockExchange {
 	@Override
 	public void placeBuyOrder(BuyOrder buyOrder) {
 		getMarket(buyOrder.getStock()).placeBuyOrder(buyOrder);
+		notifyObservers();
 	}
 
 	@Override
 	public void placeSellOrder(SellOrder sellOrder) {
 		getMarket(sellOrder.getStock()).placeSellOrder(sellOrder);
+		notifyObservers();
 	}
 
 	@Override
 	public void cancelBuyOrder(BuyOrder buyOrder) {
 		getMarket(buyOrder.getStock()).cancelBuyOrder(buyOrder);
+		notifyObservers();
 	}
 
 	@Override
 	public void cancelSellOrder(SellOrder sellOrder) {
 		getMarket(sellOrder.getStock()).cancelSellOrder(sellOrder);
+		notifyObservers();
 	}
 	
 	@Override
@@ -89,5 +90,4 @@ public class DefaultStockExchange implements StockExchange {
 			
 		return result.delete(result.length()-2,result.length()).append("]").toString();
 	}
-
 }

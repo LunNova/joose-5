@@ -4,11 +4,7 @@ import static uk.ac.glasgow.jagora.test.stub.StubStock.lemons;
 
 import org.junit.Before;
 
-import uk.ac.glasgow.jagora.impl.DefaultStockExchange;
-import uk.ac.glasgow.jagora.impl.DefaultTrader;
-import uk.ac.glasgow.jagora.impl.DefaultWorld;
-import uk.ac.glasgow.jagora.impl.LimitBuyOrder;
-import uk.ac.glasgow.jagora.impl.LimitSellOrder;
+import uk.ac.glasgow.jagora.impl.*;
 import uk.ac.glasgow.jagora.test.StockExchangeAndTraderTest;
 
 public class DefaultStockExchangeAndTraderTest extends StockExchangeAndTraderTest {
@@ -17,8 +13,16 @@ public class DefaultStockExchangeAndTraderTest extends StockExchangeAndTraderTes
 	public void setUp(){
 		stockExchange = new DefaultStockExchange(new DefaultWorld());
 		
-		buyer = new DefaultTrader("buyer", 1000.0, lemons, 0);
-		seller = new DefaultTrader("seller", 0.0, lemons, 10);
+		buyer = new DefaultTraderBuilder()
+				.setName("buyer")
+				.setCash(1000.0)
+				.addStock(lemons, 0)
+				.build();
+		seller = new DefaultTraderBuilder()
+				.setName("seller")
+				.setCash(0.0)
+				.addStock(lemons, 10)
+				.build();
 		
 		
 		goodSellOrder =

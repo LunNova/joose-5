@@ -1,10 +1,11 @@
 package uk.ac.glasgow.jagora.impl;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 import uk.ac.glasgow.jagora.Stock;
-import uk.ac.glasgow.jagora.StockExchange;
+import uk.ac.glasgow.jagora.StockExchangeOrderView;
 
 /**
  * Implements the behaviour of a passive default trader who never makes bids or
@@ -13,20 +14,18 @@ import uk.ac.glasgow.jagora.StockExchange;
  * @author tws
  *
  */
-public class DefaultTrader extends AbstractTrader {
-	
-	public DefaultTrader(String name, Double cash, Stock stock, Integer quantity) {
-		super(name, cash, createInventory(stock, quantity));
-	}
-
-	private static Map<Stock, Integer> createInventory(Stock stock, int quantity) {
-		Map<Stock,Integer> inventory = new HashMap<Stock,Integer>();
-		inventory.put(stock, quantity);
-		return inventory;
+public class DefaultTrader extends AbstractTrader implements Observer {
+	public DefaultTrader(String name, Double cash, Map<Stock, Integer> inventory) {
+		super(name, cash, inventory);
 	}
 
 	@Override
-	public void speak(StockExchange stockExchange) {
+	public void speak(StockExchangeOrderView stockExchange) {
 		//Does nothing.
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+//TODO: test me pls
 	}
 }

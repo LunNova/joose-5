@@ -5,6 +5,7 @@ import static uk.ac.glasgow.jagora.test.stub.StubStock.lemons;
 import org.junit.Before;
 
 import uk.ac.glasgow.jagora.impl.DefaultTrader;
+import uk.ac.glasgow.jagora.impl.DefaultTraderBuilder;
 import uk.ac.glasgow.jagora.test.TraderTest;
 
 public class DefaultTraderTest extends TraderTest {
@@ -17,6 +18,8 @@ public class DefaultTraderTest extends TraderTest {
 		cash = 1000.0;
 		name = "default";
 		
-		this.trader = new DefaultTrader(name, cash, stock, quantity);
+		this.trader = new DefaultTraderBuilder()
+				.setName(name).setCash(cash).addStock(lemons, quantity)
+				.build();
 	}
 }

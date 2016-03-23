@@ -3,14 +3,9 @@ package uk.ac.glasgow.jagora.test.stub;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.glasgow.jagora.BuyOrder;
-import uk.ac.glasgow.jagora.SellOrder;
-import uk.ac.glasgow.jagora.Stock;
-import uk.ac.glasgow.jagora.StockExchange;
-import uk.ac.glasgow.jagora.TickEvent;
-import uk.ac.glasgow.jagora.Trade;
+import uk.ac.glasgow.jagora.*;
 
-public class StubStockExchange implements StockExchange {
+public class StubStockExchange extends java.util.Observable implements StockExchange {
 
 	public final List<BuyOrder> buyOrders = new ArrayList<BuyOrder>();
 	public final List<SellOrder> sellOrders = new ArrayList<SellOrder>();

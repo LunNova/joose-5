@@ -7,10 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import uk.ac.glasgow.jagora.Stock;
-import uk.ac.glasgow.jagora.StockExchange;
-import uk.ac.glasgow.jagora.TradeException;
-import uk.ac.glasgow.jagora.Trader;
+import uk.ac.glasgow.jagora.*;
 
 public class StubTrader implements Trader {
 	
@@ -32,7 +29,7 @@ public class StubTrader implements Trader {
 	}
 
 	@Override
-	public void speak(StockExchange stockExchange) {
+	public void speak(StockExchangeOrderView stockExchange) {
 		// Does nothing.
 	}
 

@@ -4,13 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import uk.ac.glasgow.jagora.BuyOrder;
-import uk.ac.glasgow.jagora.SellOrder;
-import uk.ac.glasgow.jagora.Stock;
-import uk.ac.glasgow.jagora.StockExchange;
-import uk.ac.glasgow.jagora.impl.AbstractTrader;
-import uk.ac.glasgow.jagora.impl.LimitBuyOrder;
-import uk.ac.glasgow.jagora.impl.LimitSellOrder;
+import uk.ac.glasgow.jagora.*;
 
 public class RandomTrader extends AbstractTrader {
 	
@@ -40,7 +34,7 @@ public class RandomTrader extends AbstractTrader {
 	}
 
 	@Override
-	public void speak(StockExchange stockExchange) {
+	public void speak(StockExchangeOrderView stockExchange) {
 
 		Integer quantity = random.nextInt(maxQuantity);
 		if (random.nextBoolean()){
