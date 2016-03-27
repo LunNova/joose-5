@@ -26,8 +26,13 @@ public class DefaultStockExchange extends Observable implements StockExchange {
 	
 	@Override
 	public void doClearing() {
+		int count = tradeHistory.size();
+
 		for (Market market: markets.values())
 			tradeHistory.addAll(market.doClearing());
+
+		if (count != tradeHistory.size())
+			notifyObservers();
 	}
 
 	@Override

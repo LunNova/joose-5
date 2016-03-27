@@ -16,15 +16,13 @@ public class RandomTrader extends AbstractTrader {
 	private Double lastKnownBestOffer;
 	private Double lastKnownBestBid;
 
-	public RandomTrader(
-		String name, Double cash, Stock stock, Integer initialQuantity, 
-		Integer maxTradeQuantity, Double priceRange, Random random) {
-		
-		super(name, cash, createInventoryMap(stock, initialQuantity));
-		this.stock = stock;
+	public RandomTrader(String name, Double cash, Map<Stock, Integer> inventory, Random random, double priceRange,
+						Integer maxQuantity, Stock randomlyTradedStock) {
+		super(name, cash, inventory);
 		this.random = random;
 		this.priceRange = priceRange;
-		this.maxQuantity = maxTradeQuantity;
+		this.maxQuantity = maxQuantity;
+		this.stock = randomlyTradedStock;
 	}
 
 	private static Map<Stock, Integer> createInventoryMap(Stock stock, Integer quantity) {

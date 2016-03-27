@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import uk.ac.glasgow.jagora.impl.RandomTrader;
+import uk.ac.glasgow.jagora.impl.RandomTraderBuilder;
 import uk.ac.glasgow.jagora.impl.StockExchangeOrderProxy;
 import uk.ac.glasgow.jagora.test.TraderTest;
 import uk.ac.glasgow.jagora.test.stub.StubStockExchange;
@@ -22,7 +23,16 @@ public class RandomTraderTest  extends TraderTest{
 		this.stock = lemons;
 		this.quantity = 100;
 		Random random = new Random (1);
-		this.trader = new RandomTrader(name, cash, stock, quantity, 10, 2.0, random);
+		RandomTraderBuilder randomTraderBuilder = new RandomTraderBuilder();
+		randomTraderBuilder
+				.setRandomlyTradedStock(stock)
+				.setMaxQuantity(10)
+				.setPriceRange(2.0)
+				.setRandom(random)
+				.setName(name)
+				.setCash(cash)
+				.addStock(stock, quantity);
+		this.trader = randomTraderBuilder.build();
 	}
 	
 	@Test
