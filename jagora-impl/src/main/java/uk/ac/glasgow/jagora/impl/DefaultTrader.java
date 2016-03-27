@@ -26,6 +26,6 @@ public class DefaultTrader extends AbstractTrader implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-//TODO: test me pls
+		//something changed in stockexchange
 	}
 }
