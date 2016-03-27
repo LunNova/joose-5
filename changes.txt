@@ -1,12 +1,7 @@
-1.
-We added an Observable interface, and made the StockExchange interface extend from it
-    The
+1. We added an Observable interface, and made the StockExchange interface extend from it
 
-2.
-Add AbstractTraderBuilder, DefaultTraderBuilder, RandomTraderBuilder
-Used when constructing traders. In demo, simplifies constructing random traders as only name + random are changed during loop, other fields are set once.
+2. Add AbstractTraderBuilder, DefaultTraderBuilder, RandomTraderBuilder
+   Used when constructing traders. In demo, simplifies constructing random traders as only name + random are changed during loop, other fields are set once.
 
-3.
-Add a StockExchangeOrderView interface. Create StockExchangeOrderProxy class.
-
-Proxy is created which implements order view interface, this is sent to traders. Traders no longer have access to anything not related to orders.
+3. Add a StockExchangeOrderView interface. Create StockExchangeOrderProxy class.
+   Proxy is created which implements order view interface, this is sent to traders. Traders no longer have access to anything not related to orders.
